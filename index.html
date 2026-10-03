@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet & Bean | Artisan Coffee Roasters</title>
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0b08;
+            color: #f3e9dc;
+            overflow-x: hidden;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(15, 11, 8, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #d4a373;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: #f3e9dc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a373;
+        }
+
+        /* Hero Section with Video Background */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(15, 11, 8, 0.5) 0%, rgba(15, 11, 8, 0.9) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 58px;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #dddddd;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #d4a373;
+            color: #0f0b08;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #faedcd;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 163, 115, 0.3);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: #d4a373;
+        }
+
+        .section-title p {
+            color: #aaaaaa;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        /* Coffee Grid */
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .coffee-card {
+            background: #18120d;
+            border: 1px solid #2a2017;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .coffee-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4a373;
+        }
+
+        .coffee-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .coffee-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .coffee-card p {
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 600;
+            color: #d4a373;
+        }
+
+        /* Menu Card Banner Section */
+        .menu-banner-section {
+            background: #140e0a;
+            border-top: 1px solid #2a2017;
+            border-bottom: 1px solid #2a2017;
+        }
+
+        .menu-banner-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-banner-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .menu-banner-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: #d4a373;
+            margin-bottom: 15px;
+        }
+
+        .menu-banner-text p {
+            color: #cccccc;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .menu-banner-img {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .menu-banner-img img {
+            max-width: 100%;
+            max-height: 480px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+            border: 2px solid #2a2017;
+            transition: transform 0.3s;
+        }
+
+        .menu-banner-img img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Reviews / Comments Section */
+        .reviews-section {
+            background-color: #0f0b08;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background: #18120d;
+            border: 1px solid #2a2017;
+            padding: 25px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .stars {
+            color: #d4a373;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-text {
+            font-size: 14px;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #d4a373;
+            color: #0f0b08;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .reviewer-info h4 {
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .reviewer-info span {
+            color: #888888;
+            font-size: 12px;
+        }
+
+        /* Order Form Modal (Popup) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #18120d;
+            border: 1px solid #d4a373;
+            padding: 35px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #aaaaaa;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #d4a373;
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #d4a373;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #cccccc;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0f0b08;
+            border: 1px solid #2a2017;
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #d4a373;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #090604;
+            color: #777777;
+            font-size: 14px;
+            border-top: 1px solid #1a130c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 38px; }
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">Velvet & Bean</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#full-menu">Menu Card</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Background Video -->
+    <section class="hero" id="home">
+        <video class="bg-video" autoplay loop muted playsinline>
+            <source src="images/coffee-bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+            <h1>Experience Pure Coffee Craftsmanship</h1>
+            <p>Handcrafted espresso, rich aromas, and artisanal blends brewed fresh for every moment.</p>
+            <a href="#menu" class="btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Coffee Menu Section with Individual Images -->
+    <section class="menu-section" id="menu">
+        <div class="section-title">
+            <h2>Our Coffee Selection</h2>
+            <p>Freshly roasted specialty coffees prepared by expert baristas</p>
+        </div>
+
+        <div class="coffee-grid">
+            <!-- Espresso -->
+            <div class="coffee-card">
+                <img src="images/Espresso.jpg" alt="Espresso">
+                <div class="card-body">
+                    <h3>Espresso</h3>
+                    <p>Rich, bold, and concentrated shot of pure roasted coffee beans with golden crema.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 350</span>
+                        <button class="btn" onclick="openOrderModal('Espresso')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cappuccino -->
+            <div class="coffee-card">
+                <img src="images/Cappuccino.jpg" alt="Cappuccino">
+                <div class="card-body">
+                    <h3>Cappuccino</h3>
+                    <p>Equal parts of rich espresso, velvety steamed milk, and a deep layer of foam.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 550</span>
+                        <button class="btn" onclick="openOrderModal('Cappuccino')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caffè Latte -->
+            <div class="coffee-card">
+                <img src="images/Caffe-latte.jpg" alt="Caffè Latte">
+                <div class="card-body">
+                    <h3>Caffè Latte</h3>
+                    <p>Smooth espresso mixed with steamed milk and finished with subtle micro-foam art.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 550</span>
+                        <button class="btn" onclick="openOrderModal('Caffè Latte')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Americano -->
+            <div class="coffee-card">
+                <img src="images/Americano.jpg" alt="Americano">
+                <div class="card-body">
+                    <h3>Americano</h3>
+                    <p>Espresso shots diluted with hot water for a smooth yet strong coffee experience.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 450</span>
+                        <button class="btn" onclick="openOrderModal('Americano')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flat White -->
+            <div class="coffee-card">
+                <img src="images/Flat-white.jpg" alt="Flat White">
+                <div class="card-body">
+                    <h3>Flat White</h3>
+                    <p>Double shot espresso topped with silky micro-foamed milk for strong coffee notes.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 600</span>
+                        <button class="btn" onclick="openOrderModal('Flat White')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caramel Macchiato -->
+            <div class="coffee-card">
+                <img src="images/Caramel.jpg" alt="Caramel Specialty">
+                <div class="card-body">
+                    <h3>Caramel Macchiato</h3>
+                    <p>Freshly steamed milk with vanilla syrup, espresso, and warm caramel drizzle.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 700</span>
+                        <button class="btn" onclick="openOrderModal('Caramel Macchiato')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mocha Latte -->
+            <div class="coffee-card">
+                <img src="images/Mocha-latte.jpg" alt="Mocha Latte">
+                <div class="card-body">
+                    <h3>Caffè Mocha</h3>
+                    <p>Espresso blended with dark chocolate syrup, steamed milk, and rich foam.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 650</span>
+                        <button class="btn" onclick="openOrderModal('Caffè Mocha')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cold Brew -->
+            <div class="coffee-card">
+                <img src="images/Cold-brew.jpg" alt="Cold Brew">
+                <div class="card-body">
+                    <h3>Cold Brew</h3>
+                    <p>Slowly steeped in cold water for 18 hours for an ultra-smooth iced coffee experience.</p>
+                    <div class="card-footer">
+                        <span class="price">Rs. 650</span>
+                        <button class="btn" onclick="openOrderModal('Cold Brew')">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Card Display Section -->
+    <section class="menu-banner-section" id="full-menu">
+        <div class="menu-banner-container">
+            <div class="menu-banner-text">
+                <h2>Our Complete Menu Card</h2>
+                <p>Want to see our full range of beverages, snacks, and seasonal specials? Check out our official menu card or download it directly to your device.</p>
+                <a href="images/Menu-card.png" download="Coffee-Menu-Card" class="btn">Download Menu Card</a>
+            </div>
+            <div class="menu-banner-img">
+                <a href="images/Menu-card.png" target="_blank">
+                    <img src="images/Menu-card.png" alt="Coffee Menu Card">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews / Comments Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Real stories from coffee lovers around the town</p>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"The Caramel Macchiato here is absolutely divine! Perfectly balanced sweetness with smooth espresso. Highly recommended!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">S</div>
+                    <div class="reviewer-info">
+                        <h4>Sophia Reynolds</h4>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Best Cold Brew in town hands down! Very friendly staff and cozy aesthetic ambience. My go-to place every morning."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">M</div>
+                    <div class="reviewer-info">
+                        <h4>Michael Chen</h4>
+                        <span>Coffee Enthusiast</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"The rich aroma as soon as you step in is heavenly. Flat White with micro-foam art made my day. Excellent quality!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar">E</div>
+                    <div class="reviewer-info">
+                        <h4>Emma Watson</h4>
+                        <span>Regular Visitor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Modal Popup -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+            <h3>Place Your Order</h3>
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>Selected Coffee</label>
+                    <input type="text" id="selectedCoffee" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address</label>          <textarea rows="3" placeholder="Enter your address" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2026 Velvet & Bean Coffee Roasters. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        function openOrderModal(coffeeName) {
+            document.getElementById('selectedCoffee').value = coffeeName;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            const coffee = document.getElementById('selectedCoffee').value;
+            alert("Success! Your order for " + coffee + " has been placed successfully. We will deliver it soon!");
+            closeOrderModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        }
+    </script>
+</body>
+</html>
